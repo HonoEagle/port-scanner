@@ -24,29 +24,6 @@ def stage(text: str, symbol: str = '...') -> str:
     return f""" {Col.Symbol(symbol, yyellow, Col.blue)} {yyellow}{text}{Col.reset}"""
     
 
-
-
-def main():
-    System.Size(150, 40)
-    System.Title("Port Scanner")
-    print()
-    print(Colorate.Diagonal(Colors.purple_to_blue, Center.XCenter(banner1 + '\n\n')))
-    print('\n')
-    print(stage("Welcome to port Scanner", '-'))
-    time.sleep(1)
-    time.sleep(1)
-    print(stage("Scanning on" + target , '-'))
-    time.sleep(1)
-    print('\n')
-    print('[+] Scan complete!')
-    print('\n')
-    print('[+] Found:')
-    print('\n')
-    print('[+] Wifi Scanner')
-    print('\n')
-    input("Press Enter to exit...")
-    exit()
-
 if len(sys.argv) == 2:
     target = socket.gethostbyname(sys.argv[1])
 else:
@@ -63,7 +40,7 @@ try:
     time.sleep(1)
     for port in range(1,65535):
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        s.settimeout(0.01)
+        s.settimeout(0.04)
         result = s.connect_ex((target,port))
         if result ==0:
             print(stage(Col.green + "Port " + str(port) + f" is open on {target}" + Col.reset))
