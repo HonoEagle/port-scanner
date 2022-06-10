@@ -25,7 +25,8 @@ def stage(text: str, symbol: str = '...') -> str:
     
 
 if len(sys.argv) == 2:
-    target = socket.gethostbyname(sys.argv[1])
+    target = sys.argv[1]
+    target2 = socket.gethostbyname(sys.argv[1])
 else:
     print("Invalid amount of Argument")
     print("Syntax (linux): python3 wifiscan.py <ip>")
@@ -35,15 +36,16 @@ try:
     System.Size(150, 40)
     System.Title("Port Scanner")
     print(Colorate.Diagonal(Colors.purple_to_blue, Center.XCenter(banner1 + '\n\n')))
-    print(stage("Scanning " + target , '-'))
+    print(stage("Scanning " + target + " " + target2 , '-'))
     print(stage(f"Scan started at {str(datetime.now())}"))
     time.sleep(1)
     for port in range(1,65535):
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         s.settimeout(0.04)
-        result = s.connect_ex((target,port))
+        #print(stage(Col.red + "Port " + str(port) + f" is open on {target}" + Col.reset))  ### PRINT LES PORTS FERMES
+        result = s.connect_ex((target2,port))
         if result ==0:
-            print(stage(Col.green + "Port " + str(port) + f" is open on {target}" + Col.reset))
+            print(stage(Col.green + "Port " + str(port) + f" is open on {target2}/{target}" + Col.reset))
         s.close()
     print('\n')
     print(stage("Scanning complete!", '-'))
