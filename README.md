@@ -19,8 +19,8 @@ $ pip3 install -r requierements.txt
 
 
 ```
-py wifiscanner.py <ip> (on Windows)
-pyhton3 wifiscanner.py <ip> (on Linux)
+py wifiscan.py <ip> (on Windows)
+pyhton3 wifiscan.py <ip> (on Linux)
 ```
 
 ## Example
